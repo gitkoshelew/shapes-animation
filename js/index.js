@@ -130,9 +130,9 @@ class Shapes {
 
   _redraw = () => {
     const [c1, c2, c3] = this._dots.map(dot => dot.coords)
-    this.parallelogram.redraw([c1, c2, c3])
-    this._dots[3].redraw(this.parallelogram.coords[3])
-    this.circle.redraw(this.parallelogram.center, Round.calculateDiameterFromSquare(this.parallelogram.square))
+    this.parallelogram && this.parallelogram.redraw([c1, c2, c3])
+    this._dots[3] && this._dots[3].redraw(this.parallelogram.coords[3])
+    this.circle && this.circle.redraw(this.parallelogram.center, Round.calculateDiameterFromSquare(this.parallelogram.square))
   }
 
 
@@ -422,7 +422,7 @@ class Circle extends Round {
   }
 
   _calculateSquare() {
-    return Pi * (this._size ** 2)
+    return Pi * ((this._size / 2) ** 2)
   }
 }
 
